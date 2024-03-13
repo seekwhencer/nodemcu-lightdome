@@ -1,0 +1,30 @@
+#include <Wire.h>
+#include <ArduinoJson.h>
+
+#define SKWNCR_DEBUG                    true
+
+#define SKWNCR_BAUD_RATE                9600
+#define SKWNCR_TICK_RATE                1000
+#define SKWNCR_VALUE_AGE                5000               // force send: send the same value every SKWNCR_VALUE_AGE milliseconds
+#define SKWNCR_VALUE_FACTOR             1
+#define SKWNCR_VALUE_OFFSET             0
+
+#define SKWNCR_WIFI_HOSTNAME            "CHANGE ME"
+#define SKWNCR_WIFI_SSID                "CHANGE ME"
+#define SKWNCR_WIFI_PASSWORD            "CHANGE ME"
+#define SKWNCR_WIFI_RECONNECT_TIME      2000
+
+#define SKWNCR_MQTT_CLIENT_NAME         "lightdome"
+#define SKWNCR_MQTT_SERVER              "CHANGE ME"
+#define SKWNCR_MQTT_PORT                1886
+#define SKWNCR_MQTT_RECONNECT_TIME       2000
+#define SKWNCR_MQTT_TOPIC               "lightdome"
+#define SKWNCR_MQTT_TOPIC_SET_FACTOR    "factor"
+#define SKWNCR_MQTT_TOPIC_SET_INTERVAL  "interval"
+#define SKWNCR_MQTT_TOPIC_SET_OFFSET    "offset"
+
+#define SKWNCR_MQTT_WELCOME             "Hi, here is the lightdome"
+
+#define SKWNCR_ADS1115_READ_DELAY       250
+#define SKWNCR_ADS1115_ADDRESS          0x48
+#define SKWNCR_ADS1115_MULTIPLIER       0.1875F
