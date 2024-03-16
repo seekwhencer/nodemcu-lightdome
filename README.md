@@ -12,6 +12,8 @@
 - 4 x Photo-Resistors
 - 4 x 10K Ohm Resistors
 
+![build process](../master/docs/image_01.png?raw=true "build process")
+
 ## Wiring:
 
 - nodeMCU - ADS1115
