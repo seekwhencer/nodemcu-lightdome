@@ -1,0 +1,40 @@
+version: "3.6"
+
+networks:
+  lightdome:
+    external: false
+    name: ${PROJECT_NAME}
+  proxy_default:
+    external: true
+
+services:
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    image: ${PROJECT_NAME}_frontend
+    working_dir: /app/frontend
+    #command: 'npm run dev'
+    #command: 'tail -f /dev/null'
+    entrypoint: [ "tail", "-f", "/dev/null" ]
+    container_name: ${PROJECT_NAME}-frontend
+    volumes:
+      - .:/app
+      - /app/frontend/node_modules
+    networks:
+      - lightdome
+      - proxy_default
+    extra_hosts:
+      - dockerhost:${HOST_IP}
+    environment:
+      - DEBUG=true
+      - ENVIRONMENT=default
+      - NODE_ENV=development
+
+      # jwilders reverse proxy for local dns resolve
+      - VIRTUAL_HOST=frontend.${PROJECT_NAME}.${HOST_NAME}
+      - VIRTUAL_PORT=${FRONTEND_SERVER_PORT}
+
+      # exported in the shell environment before start
+      - HOST_IP=${HOST_IP}
